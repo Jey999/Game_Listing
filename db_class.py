@@ -16,3 +16,7 @@ class Game_Listing:
         create_listing = f"INSERT INTO Game_Listing (Username,Game,Price,Phone,Location,Longitude,Latitude) VALUES({username},{game},{price},{phone},{location},{longitude},{latitude})"
         self.cursor.execute(create_listing)
         self.conn_Game.commit()
+
+    def read (self,ID):
+        find_specific_listing = self.cursor.execute(f"SELECT * FROM Game_Listing WHERE GameID = {ID}").fetchone()
+        print(find_specific_listing)
