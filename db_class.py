@@ -25,3 +25,8 @@ class Game_Listing:
         read_all_listing = self.cursor.execute(f"SELECT * FROM Game_listing").fetchall()
         for data in read_all_listing:
             print(f" {data[0]}, {data[1]},{data[2]},{data[3]},{data[4]},{data[5]},{data[6]},{data[7]}")
+
+    def delete(self,ID):
+        delete_listing = f"DELETE Game_Listing WHERE GameID = {ID}"
+        self.cursor.execute(delete_listing)
+        self.conn_Game.commit()
