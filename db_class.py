@@ -11,3 +11,8 @@ class Game_Listing:
 
     def filter_query(self,query):
         return self.cursor.execute(query)
+
+    def create (self,username, game,price,phone,location,longitude,latitude):
+        create_listing = f"INSERT INTO Game_Listing (Username,Game,Price,Phone,Location,Longitude,Latitude) VALUES({username},{game},{price},{phone},{location},{longitude},{latitude})"
+        self.cursor.execute(create_listing)
+        self.conn_Game.commit()
