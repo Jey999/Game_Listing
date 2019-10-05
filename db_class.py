@@ -20,3 +20,8 @@ class Game_Listing:
     def read (self,ID):
         find_specific_listing = self.cursor.execute(f"SELECT * FROM Game_Listing WHERE GameID = {ID}").fetchone()
         print(find_specific_listing)
+
+    def read_all(self):
+        read_all_listing = self.cursor.execute(f"SELECT * FROM Game_listing").fetchall()
+        for data in read_all_listing:
+            print(f" {data[0]}, {data[1]},{data[2]},{data[3]},{data[4]},{data[5]},{data[6]},{data[7]}")

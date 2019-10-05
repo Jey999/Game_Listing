@@ -10,3 +10,4 @@ Game = Game_Listing(server,database,username,password)
 
 #Game.create("'Wretch32'", "'Mario Kart'", "'40.00'","'07984632101'","'Oxford'","''","''")
 #Game.read(2)
+Game.read_all()
