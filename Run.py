@@ -13,7 +13,7 @@ Game = Game_Listing(server,database,username,password)
 #Game.read_all()
 #Game.delete(4)
 Game.location(2)
-
+#Game.update(1,205.1,1234.1,10)
 
 
 

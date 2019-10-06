@@ -36,15 +36,22 @@ class Game_Listing:
     def location(self, ID):
         query = self.cursor.execute(f"SELECT Location FROM Game_listing WHERE GameID = {ID}")
         postcode = query.fetchone()
-        post_code = ' '.join([row for row in postcode])
-        url = 'http://api.postcodes.io/postcodes/'
-        request_postcode = requests.get(url + post_code)
-        post_code_dict = request_postcode.json()
-        details = post_code_dict ['result']['longitude']
+        argument = ' '.join(row for row in postcode)
+        path = 'http://api.postcodes.io/postcodes/'
+        request_postcode = requests.get(path + argument)
+        post_code_dict = request_postcode.json()   #decode json strings into python objects
+        details = post_code_dict ['result']['longitude'] #result is the key the values that i want are for long and lat
         details2 = post_code_dict['result']['latitude']
-        print(f' longitude :'),print(details)
-        print(f' latitude :'), print(details2)
+        update_listing = f"UPDATE Game_Listing SET Longitude = {details}, Latitude = {details2} WHERE GameID = {ID}"
+        self.cursor.execute(update_listing)
+        self.conn_Game.commit()
+        # print(f' longitude :'),print(details)
+        # print(f' latitude :'), print(details2)
 
+    # def update(self,ID,Longitude,Latitude, value):
+    #     update_listing = f"UPDATE Game_Listing SET Longitude = {Longitude}, Latitude = {Latitude} WHERE GameID = {ID}"
+    #     self.cursor.execute(update_listing)
+    #     self.conn_Game.commit()
 
 
     # name = input("Tell me your name: ")
