@@ -17,6 +17,8 @@ class Game_Listing:
         self.cursor.execute(create_listing)
         self.conn_Game.commit()
 
+
+
     def read (self,ID):
         find_specific_listing = self.cursor.execute(f"SELECT * FROM Game_Listing WHERE GameID = {ID}").fetchone()
         print(find_specific_listing)
