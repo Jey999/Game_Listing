@@ -40,42 +40,12 @@ class Game_Listing:
         path = 'http://api.postcodes.io/postcodes/'
         request_postcode = requests.get(path + argument)
         post_code_dict = request_postcode.json()   #decode json strings into python objects
-        details = post_code_dict ['result']['longitude'] #result is the key the values that i want are for long and lat
-        details2 = post_code_dict['result']['latitude']
-        update_listing = f"UPDATE Game_Listing SET Longitude = {details}, Latitude = {details2} WHERE GameID = {ID}"
+        longitude = post_code_dict ['result']['longitude'] #result is the key the values that i want are for long and lat
+        latitude = post_code_dict['result']['latitude']
+        update_listing = f"UPDATE Game_Listing SET Longitude = {longitude}, Latitude = {latitude} WHERE GameID = {ID}"
         self.cursor.execute(update_listing)
         self.conn_Game.commit()
+
         # print(f' longitude :'),print(details)
         # print(f' latitude :'), print(details2)
 
-    # def update(self,ID,Longitude,Latitude, value):
-    #     update_listing = f"UPDATE Game_Listing SET Longitude = {Longitude}, Latitude = {Latitude} WHERE GameID = {ID}"
-    #     self.cursor.execute(update_listing)
-    #     self.conn_Game.commit()
-
-
-    # name = input("Tell me your name: ")
-    # print('Hello', name, 'and Welcome to Via where you can list your old games and cash out', )
-    # listings = input('would you like to view all our listings for today?')
-    # if input != 'no':
-    #     print('These are all our current listings:')
-    # for listings in Game.read_all():
-    #
-    #
-    # while user_input != 'no':
-    #     add_pet = input(name + ' would you like to add a pet ?')
-    #     if add_pet == 'no':
-    #         print('ffs what do u want to do?')
-    #     elif add_pet == 'yes':
-    #         pet_owner = input('can i get the name of the owner please?')
-    #         pet_name = input('can i get the name of your pet please?')
-    #         pet_specie = input('what specie is your pet?')
-    #         pet_breed = input('what breed is that?')
-    #         new_pet = Pet(pet_owner, pet_name, pet_specie, pet_breed)
-    #         pet_list.append(new_pet)
-    #         for pets in pet_list:
-    #             print('Pet owner:', pets.owner, ',  ', 'Pet name:', pets.name)
-    #         print('your pet has now been added to Vet Delight :)')
-    #         break
-    #     else:
-    #         print('Not valid try again')

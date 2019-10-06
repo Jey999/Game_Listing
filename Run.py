@@ -12,7 +12,7 @@ Game = Game_Listing(server,database,username,password)
 #Game.read(2)
 #Game.read_all()
 #Game.delete(4)
-Game.location(2)
+Game.location(2) # this inserts the long and lat values for each GameID
 #Game.update(1,205.1,1234.1,10)
 
 
@@ -32,7 +32,7 @@ Game.location(2)
 
 
 
-#
+
 # name = input("Tell me your name: ")
 # print('Hello', name, 'and Welcome to Via where you can list your old games and cash out', )
 # listings = input('would you like to view all our listings for today?')
@@ -51,23 +51,21 @@ Game.location(2)
 #         price = input('how much would you like to list it for')
 #         phone = input('Please enter your telephone number')
 #         location = input('Please enter your city')
-#         newgame= Game_Listing(username,game,price,phone,location)
-#         print(newgame)
-#         Game.read_all()
+#         database.create(username,game,price,phone,location)
 #
 #     else:
 #         print('Not valid try again')
-#
-#
-#     def write(self):
-#         Game_Listing = Game()
-#         Username = input("create a username: ")
-#         game = input("Enter the name of the game you would like to list: ")
-#         price = input("how much would you like to list it for: ")
-#         phone = input("Please enter your telephone number: ")
-#         location = input("Please enter your city: ")
-#
-#         try:
-#             Game_Listing.cursor.execute(f"INSERT INTO Game_Listing (Username,Game,Price,Phone,Location) VALUES({username},{game},{price},{phone},{location}");
-#         except:
-#             print("Something has gone wrong. Please check the code!")
+
+
+    # def write(self):
+    #     Game_Listing = Game()
+    #     Username = input("create a username: ")
+    #     game = input("Enter the name of the game you would like to list: ")
+    #     price = input("how much would you like to list it for: ")
+    #     phone = input("Please enter your telephone number: ")
+    #     location = input("Please enter your city: ")
+    #
+    #     try:
+    #         Game_Listing.cursor.execute(f"INSERT INTO Game_Listing (Username,Game,Price,Phone,Location) VALUES({username},{game},{price},{phone},{location}");
+    #     except:
+    #         print("Something has gone wrong. Please check the code!")
