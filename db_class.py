@@ -33,15 +33,19 @@ class Game_Listing:
         self.cursor.execute(delete_listing)
         self.conn_Game.commit()
 
-    def location_details(self, ID):
+    def location(self, ID):
         query = self.cursor.execute(f"SELECT Location FROM Game_listing WHERE GameID = {ID}")
         postcode = query.fetchone()
-        pc = ' '.join([row for row in postcode])
+        post_code = ' '.join([row for row in postcode])
         url = 'http://api.postcodes.io/postcodes/'
-        request_postcode = requests.get(url + pc)
+        request_postcode = requests.get(url + post_code)
         post_code_dict = request_postcode.json()
-        details = post_code_dict
-        print(details)
+        details = post_code_dict ['result']['longitude']
+        details2 = post_code_dict['result']['latitude']
+        print(f' longitude :'),print(details)
+        print(f' latitude :'), print(details2)
+
+
 
     # name = input("Tell me your name: ")
     # print('Hello', name, 'and Welcome to Via where you can list your old games and cash out', )
