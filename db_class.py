@@ -30,3 +30,39 @@ class Game_Listing:
         delete_listing = f"DELETE Game_Listing WHERE GameID = {ID}"
         self.cursor.execute(delete_listing)
         self.conn_Game.commit()
+
+    def location_details(self, ID):
+        query = self.cursor.execute(f"SELECT Location FROM Game_listing WHERE GameID = {ID}")
+        postcode = query.fetchone()
+        pc = ' '.join([row for row in postcode])
+        url = 'http://api.postcodes.io/postcodes/'
+        request_postcode = requests.get(url + pc)
+        post_code_dict = request_postcode.json()
+        details = post_code_dict
+        print(details)
+
+    # name = input("Tell me your name: ")
+    # print('Hello', name, 'and Welcome to Via where you can list your old games and cash out', )
+    # listings = input('would you like to view all our listings for today?')
+    # if input != 'no':
+    #     print('These are all our current listings:')
+    # for listings in Game.read_all():
+    #
+    #
+    # while user_input != 'no':
+    #     add_pet = input(name + ' would you like to add a pet ?')
+    #     if add_pet == 'no':
+    #         print('ffs what do u want to do?')
+    #     elif add_pet == 'yes':
+    #         pet_owner = input('can i get the name of the owner please?')
+    #         pet_name = input('can i get the name of your pet please?')
+    #         pet_specie = input('what specie is your pet?')
+    #         pet_breed = input('what breed is that?')
+    #         new_pet = Pet(pet_owner, pet_name, pet_specie, pet_breed)
+    #         pet_list.append(new_pet)
+    #         for pets in pet_list:
+    #             print('Pet owner:', pets.owner, ',  ', 'Pet name:', pets.name)
+    #         print('your pet has now been added to Vet Delight :)')
+    #         break
+    #     else:
+    #         print('Not valid try again')
